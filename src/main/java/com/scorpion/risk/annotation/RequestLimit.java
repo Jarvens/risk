@@ -1,8 +1,5 @@
 package com.scorpion.risk.annotation;
 
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
