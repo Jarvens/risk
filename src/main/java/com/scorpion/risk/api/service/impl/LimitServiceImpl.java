@@ -1,9 +1,10 @@
-package com.scorpion.risk.api.service;
+package com.scorpion.risk.api.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.scorpion.risk.api.entity.Limit;
 import com.scorpion.risk.api.mapper.LimitMapper;
+import com.scorpion.risk.api.service.LimitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,8 +1,10 @@
 package com.scorpion.risk.api.controller;
 
 import com.scorpion.risk.api.entity.InterfaceObj;
+import com.scorpion.risk.api.service.InterfaceObjService;
 import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.result.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api")
 public class InterfaceObjController {
+
+
+    @Autowired
+    private InterfaceObjService interfaceObjService;
 
     /**
      * 创建接口列表
@@ -57,7 +63,7 @@ public class InterfaceObjController {
      * @param pageSize
      * @return
      */
-    @RequestMapping(value = "/intrface/findByPage", method = RequestMethod.GET)
+    @RequestMapping(value = "/interface/findByPage", method = RequestMethod.GET)
     public PageResult findByPage(Integer pageNo, Integer pageSize) {
         return null;
     }
