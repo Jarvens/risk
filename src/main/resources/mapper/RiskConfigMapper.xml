@@ -12,4 +12,11 @@
     <select id="findByPage" resultType="com.scorpion.risk.api.entity.RiskConfig">
         SELECT * FROM t_risk_config
     </select>
+
+    <!--查询所有规则-->
+    <select id="findAll" resultType="com.scorpion.risk.api.entity.RiskConfig">
+        SELECT * FROM t_risk_config
+    </select>
+
+
 </mapper>

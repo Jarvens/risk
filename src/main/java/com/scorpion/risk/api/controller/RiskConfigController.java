@@ -8,11 +8,12 @@ import com.scorpion.risk.result.PageResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * 配置
@@ -27,6 +28,7 @@ public class RiskConfigController {
     @Autowired
     private RiskConfigService riskConfigService;
 
+
     /**
      * 创建配置
      *
@@ -35,7 +37,7 @@ public class RiskConfigController {
      */
     @RequestLimit(count = 10, time = 60000, config = true)
     @RequestMapping(value = "/config/add", method = RequestMethod.POST)
-    public BaseResult add(@RequestBody  RiskConfig riskConfig) {
+    public BaseResult add(@RequestBody RiskConfig riskConfig) {
         LOGGER.info("请求进来");
         return riskConfigService.add(riskConfig);
     }
@@ -60,10 +62,31 @@ public class RiskConfigController {
      * @param pageSize
      * @return
      */
-    @RequestLimit(count = 10,time = 60000,config = false)
+    @RequestLimit(count = 10, time = 60000, config = false)
     @RequestMapping(value = "/config/findByPage", method = RequestMethod.GET)
     public PageResult findByPage(Integer pageNo, Integer pageSize) {
         return riskConfigService.findByPage(pageNo, pageSize);
+    }
+
+    /**
+     * 查看规则详情
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/config/info", method = RequestMethod.GET)
+    public BaseResult info(Long id) {
+        return riskConfigService.info(id);
+    }
+
+    /**
+     * 查询所有规则
+     *
+     * @return
+     */
+    @RequestMapping(value = "/config/findAll", method = RequestMethod.GET)
+    public BaseResult findAll() {
+        return riskConfigService.findAll();
     }
 
 }

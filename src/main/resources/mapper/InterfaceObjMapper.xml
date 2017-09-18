@@ -3,8 +3,8 @@
 <mapper namespace="com.scorpion.risk.api.mapper.InterfaceObjMapper">
 
     <insert id="add" parameterType="com.scorpion.risk.api.entity.InterfaceObj">
-        INSERT INTO t_interface(name,type,url,ruleCode,params,paramsType,createTime,updateTime)
-        VALUES (#{name},#{type},#{url},#{ruleCode},#{params},#{paramsType},NOW(),NOW())
+        INSERT INTO t_interface(name,type,url,ruleId,params,paramsType,createTime,updateTime)
+        VALUES (#{name},#{type},#{url},#{ruleId},#{params},#{paramsType},NOW(),NOW())
     </insert>
 
     <delete id="deleteByPrimaryKey">
@@ -20,7 +20,7 @@
         SET name=#{name},
         type=#{type},
         url=#{url},
-        ruleCode=#{ruleCode},
+        ruleId=#{ruleId},
         params=#{params},
         paramsType=#{paramsType},
         updateTime=NOW()

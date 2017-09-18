@@ -1,7 +1,5 @@
 package com.scorpion.risk.result;
 
-import java.awt.*;
-
 /**
  * Created on 2017/9/16.
  */

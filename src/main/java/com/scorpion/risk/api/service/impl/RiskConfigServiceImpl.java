@@ -10,6 +10,8 @@ import com.scorpion.risk.result.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created on 2017/9/17.
  */
@@ -62,5 +64,28 @@ public class RiskConfigServiceImpl implements RiskConfigService {
         Page<RiskConfig> riskConfigs = riskConfigMapper.findByPage();
         PageResult<RiskConfig> result = new PageResult<>(riskConfigs);
         return result;
+    }
+
+    /**
+     * 配置详情
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public BaseResult info(Long id) {
+
+        return null;
+    }
+
+    /**
+     * 查询所有规则
+     *
+     * @return
+     */
+    @Override
+    public BaseResult findAll() {
+        List<RiskConfig> list = riskConfigMapper.findAll();
+        return BaseResult.success(list);
     }
 }

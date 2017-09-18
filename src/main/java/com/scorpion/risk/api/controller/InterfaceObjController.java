@@ -75,7 +75,7 @@ public class InterfaceObjController {
      * @param ruleId
      * @return
      */
-    @RequestMapping(value = "/ruleSetting", method = RequestMethod.POST)
+    @RequestMapping(value = "/interface/ruleSetting", method = RequestMethod.POST)
     public BaseResult ruleSetting(Long interfaceId, Long ruleId) {
         return interfaceObjService.ruleSetting(interfaceId,ruleId);
     }

@@ -3,10 +3,15 @@ package com.scorpion.risk.api.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.scorpion.risk.api.entity.InterfaceObj;
+import com.scorpion.risk.api.entity.RiskConfig;
+import com.scorpion.risk.api.entity.RiskConfigSnapshot;
 import com.scorpion.risk.api.mapper.InterfaceObjMapper;
+import com.scorpion.risk.api.mapper.RiskConfigMapper;
+import com.scorpion.risk.api.mapper.RiskConfigSnapShotMapper;
 import com.scorpion.risk.api.service.InterfaceObjService;
 import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.result.PageResult;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +25,12 @@ public class InterfaceObjServiceImpl implements InterfaceObjService {
 
     @Autowired
     private InterfaceObjMapper interfaceObjMapper;
+
+    @Autowired
+    private RiskConfigMapper riskConfigMapper;
+
+    @Autowired
+    private RiskConfigSnapShotMapper riskConfigSnapShotMapper;
 
     /**
      * 创建接口
@@ -101,9 +112,17 @@ public class InterfaceObjServiceImpl implements InterfaceObjService {
      */
     @Override
     public BaseResult ruleSetting(Long interfaceId, Long ruleId) {
-        return null;
+        RiskConfig riskConfig = riskConfigMapper.findByPrimaryKey(ruleId);
+        if (null == riskConfig)
+            return BaseResult.error("config_not_found", "规则不存在");
+        RiskConfigSnapshot riskConfigSnapshot = new RiskConfigSnapshot();
+        BeanUtils.copyProperties(riskConfig, riskConfigSnapshot);
+        riskConfigSnapshot.setInterfaceId(interfaceId);
+        int result = riskConfigSnapShotMapper.add(riskConfigSnapshot);
+        if (result > 0)
+            return BaseResult.success("操作成功");
+        return BaseResult.error("setting_fail", "操作失败");
     }
-
 
 
 }

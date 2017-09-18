@@ -4,6 +4,8 @@ import com.github.pagehelper.Page;
 import com.scorpion.risk.api.entity.RiskConfig;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * Created on 2017/9/17.
  */
@@ -12,6 +14,7 @@ public interface RiskConfigMapper {
 
     /**
      * 创建配置
+     *
      * @param riskConfig
      * @return
      */
@@ -19,6 +22,7 @@ public interface RiskConfigMapper {
 
     /**
      * 根据id删除配置
+     *
      * @param id
      * @return
      */
@@ -26,7 +30,32 @@ public interface RiskConfigMapper {
 
     /**
      * 分页查询配置信息
+     *
      * @return
      */
     Page<RiskConfig> findByPage();
+
+    /**
+     * 配置详情
+     *
+     * @param id
+     * @return
+     */
+    RiskConfig info(Long id);
+
+    /**
+     * 查询所有规则
+     *
+     * @return
+     */
+    List<RiskConfig> findAll();
+
+    /**
+     * 根据id查询规则
+     *
+     * @param id
+     * @return
+     */
+    RiskConfig findByPrimaryKey(Long id);
+
 }

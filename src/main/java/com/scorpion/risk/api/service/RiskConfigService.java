@@ -33,4 +33,18 @@ public interface RiskConfigService {
      * @return
      */
     PageResult findByPage(Integer pageNo, Integer pageSize);
+
+
+    /**
+     * 配置详情
+     * @param id
+     * @return
+     */
+    BaseResult info(Long id);
+
+    /**
+     * 查询所有规则列表
+     * @return
+     */
+    BaseResult findAll();
 }

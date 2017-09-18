@@ -30,7 +30,6 @@ public class RequestLimitInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        LOGGER.info("限流拦截器------>>>>>>");
         if (handler instanceof HandlerMethod) {
             response.setContentType("application/json;charset=UTF-8");
             response.setHeader("Access-Control-Allow-Origin", "*");
