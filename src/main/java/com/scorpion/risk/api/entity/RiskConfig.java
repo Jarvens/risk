@@ -10,6 +10,9 @@ public class RiskConfig {
     //主键
     private Long id;
 
+    //名称
+    private String name;
+
     //黑名单
     private List<IpList> blackList;
 
@@ -27,6 +30,20 @@ public class RiskConfig {
 
     //有效期 单位:分钟
     private int expire;
+
+    //配置模式  1手动  0自动
+    private String auto;
+
+    //开关   1关  0开   默认 关闭
+    private String off;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -84,16 +101,35 @@ public class RiskConfig {
         this.expire = expire;
     }
 
+    public String getAuto() {
+        return auto;
+    }
+
+    public void setAuto(String auto) {
+        this.auto = auto;
+    }
+
+    public String getOff() {
+        return off;
+    }
+
+    public void setOff(String off) {
+        this.off = off;
+    }
+
     @Override
     public String toString() {
         return "RiskConfig{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", blackList=" + blackList +
                 ", whiteList=" + whiteList +
                 ", frequency=" + frequency +
                 ", maxClient=" + maxClient +
                 ", authorization='" + authorization + '\'' +
                 ", expire=" + expire +
+                ", auto='" + auto + '\'' +
+                ", off='" + off + '\'' +
                 '}';
     }
 }

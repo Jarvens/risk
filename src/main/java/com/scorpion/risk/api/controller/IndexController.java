@@ -3,6 +3,7 @@ package com.scorpion.risk.api.controller;
 import com.github.pagehelper.Page;
 import com.scorpion.risk.annotation.RequestLimit;
 import com.scorpion.risk.api.entity.Limit;
+import com.scorpion.risk.api.entity.RiskConfig;
 import com.scorpion.risk.api.service.IndexService;
 import com.scorpion.risk.api.service.LimitService;
 import com.scorpion.risk.result.BaseResult;
@@ -51,6 +52,12 @@ public class IndexController {
         Page<Limit> limitPage = limitService.findByPage(pageNum,pageSize);
         PageResult<Limit> pageResult = new PageResult<>(limitPage);
         return pageResult;
+    }
+
+    @RequestMapping(value = "/post",method = RequestMethod.POST)
+    public BaseResult post(RiskConfig riskConfig){
+        System.out.println(riskConfig);
+        return BaseResult.success("SUCCESS");
     }
 
 }

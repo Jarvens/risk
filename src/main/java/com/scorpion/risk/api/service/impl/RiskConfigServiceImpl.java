@@ -1,5 +1,7 @@
 package com.scorpion.risk.api.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.scorpion.risk.api.entity.RiskConfig;
 import com.scorpion.risk.api.mapper.RiskConfigMapper;
 import com.scorpion.risk.api.service.RiskConfigService;
@@ -26,7 +28,11 @@ public class RiskConfigServiceImpl implements RiskConfigService {
      */
     @Override
     public BaseResult add(RiskConfig riskConfig) {
-        return null;
+        int result = riskConfigMapper.add(riskConfig);
+        if (result <= 0) {
+            return BaseResult.error("add_fail", "创建配置信息失败");
+        }
+        return BaseResult.success("创建配置信息成功");
     }
 
     /**
@@ -37,7 +43,10 @@ public class RiskConfigServiceImpl implements RiskConfigService {
      */
     @Override
     public BaseResult deleteByPrimaryKey(Long id) {
-        return null;
+        int result = riskConfigMapper.deleteByPrimaryKey(id);
+        if (result <= 0)
+            return BaseResult.error("delete_fail", "删除失败");
+        return BaseResult.success("删除配置信息成功");
     }
 
     /**
@@ -49,6 +58,9 @@ public class RiskConfigServiceImpl implements RiskConfigService {
      */
     @Override
     public PageResult findByPage(Integer pageNo, Integer pageSize) {
-        return null;
+        PageHelper.startPage(pageNo, pageSize);
+        Page<RiskConfig> riskConfigs = riskConfigMapper.findByPage();
+        PageResult<RiskConfig> result = new PageResult<>(riskConfigs);
+        return result;
     }
 }
