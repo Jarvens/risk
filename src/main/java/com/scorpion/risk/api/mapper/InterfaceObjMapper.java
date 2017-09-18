@@ -61,5 +61,12 @@ public interface InterfaceObjMapper {
      */
     int ruleSetting(@Param("interfaceId") Long interfaceId, @Param("ruleId") Long ruleId);
 
+    /**
+     * 根据id查询接口
+     * @param id
+     * @return
+     */
+    InterfaceObj findByPrimaryKey(Long id);
+
 
 }

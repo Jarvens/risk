@@ -18,5 +18,9 @@
         SELECT * FROM t_risk_config
     </select>
 
+    <select id="findByPrimaryKey" resultType="com.scorpion.risk.api.entity.RiskConfig">
+        SELECT * FROM t_risk_config WHERE id=#{id}
+    </select>
+
 
 </mapper>

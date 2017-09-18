@@ -31,5 +31,9 @@
         UPDATE t_interface SET ruleId=#{ruleId} WHERE id=#{interfaceId}
     </update>
 
+    <select id="findByPrimaryKey" resultType="com.scorpion.risk.api.entity.InterfaceObj">
+        SELECT * FROM t_interface WHERE id=#{id}
+    </select>
+
 
 </mapper>

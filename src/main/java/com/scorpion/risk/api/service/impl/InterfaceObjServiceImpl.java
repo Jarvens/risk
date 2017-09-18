@@ -115,12 +115,19 @@ public class InterfaceObjServiceImpl implements InterfaceObjService {
         RiskConfig riskConfig = riskConfigMapper.findByPrimaryKey(ruleId);
         if (null == riskConfig)
             return BaseResult.error("config_not_found", "规则不存在");
+        InterfaceObj interfaceObj = interfaceObjMapper.findByPrimaryKey(interfaceId);
+        if (null == interfaceObj)
+            return BaseResult.error("interface_not_found", "接口不存在");
         RiskConfigSnapshot riskConfigSnapshot = new RiskConfigSnapshot();
         BeanUtils.copyProperties(riskConfig, riskConfigSnapshot);
         riskConfigSnapshot.setInterfaceId(interfaceId);
         int result = riskConfigSnapShotMapper.add(riskConfigSnapshot);
-        if (result > 0)
+        if (result > 0) {
+            interfaceObj.setRuleId(riskConfigSnapshot.getId());
+            interfaceObjMapper.update(interfaceObj);
             return BaseResult.success("操作成功");
+        }
+
         return BaseResult.error("setting_fail", "操作失败");
     }
 

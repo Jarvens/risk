@@ -3,8 +3,11 @@
 <mapper namespace="com.scorpion.risk.api.mapper.RiskConfigSnapShotMapper">
 
     <insert id="add" parameterType="com.scorpion.risk.api.entity.RiskConfigSnapshot">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
       INSERT INTO t_risk_config_snapshot(name,frequency,maxClient,authorization,expire,auto,off,interfaceId,createTime,updateTime)
-      VALUES (#{name},#{frequnency},#{maxClient},#{authorization},#{expire},#{auto},#{off},#{interfaceId},NOW(),NOW())
+      VALUES (#{name},#{frequency},#{maxClient},#{authorization},#{expire},#{auto},#{off},#{interfaceId},NOW(),NOW())
     </insert>
 
 </mapper>
