@@ -1,8 +1,10 @@
 package com.scorpion.risk.api.controller;
 
 import com.scorpion.risk.annotation.RequestLimit;
+import com.scorpion.risk.api.service.DonationService;
 import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.util.HttpUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,14 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class DonationController {
 
 
+    @Autowired
+    private DonationService donationService;
+
     /**
      * 根据献血证号查询
+     *
      * @param donationId
      * @return
      */
-    @RequestLimit(count = 20,time = 60000,config = false)
-    @RequestMapping(value = "/donation/query",method = RequestMethod.GET)
-    public BaseResult query(String donationId){
+    @RequestLimit(count = 20, time = 60000, config = false)
+    @RequestMapping(value = "/donation/query", method = RequestMethod.GET)
+    public BaseResult query(String donationId) {
         String response = HttpUtil.get(donationId);
 
         return null;
