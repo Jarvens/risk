@@ -74,8 +74,10 @@ public class RiskConfigServiceImpl implements RiskConfigService {
      */
     @Override
     public BaseResult info(Long id) {
-
-        return null;
+        RiskConfig riskConfig = riskConfigMapper.findByPrimaryKey(id);
+        if (null == riskConfig)
+            return BaseResult.notFound();
+        return BaseResult.success(riskConfig);
     }
 
     /**

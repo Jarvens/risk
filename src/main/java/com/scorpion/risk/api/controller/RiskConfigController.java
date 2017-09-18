@@ -5,6 +5,7 @@ import com.scorpion.risk.api.entity.RiskConfig;
 import com.scorpion.risk.api.service.RiskConfigService;
 import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.result.PageResult;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 /**
  * 配置
@@ -35,6 +35,7 @@ public class RiskConfigController {
      * @param riskConfig
      * @return
      */
+    @ApiOperation(value = "规则",notes = "创建规则")
     @RequestLimit(count = 10, time = 60000, config = true)
     @RequestMapping(value = "/config/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody RiskConfig riskConfig) {

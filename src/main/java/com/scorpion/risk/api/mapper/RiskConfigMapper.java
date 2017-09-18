@@ -3,6 +3,7 @@ package com.scorpion.risk.api.mapper;
 import com.github.pagehelper.Page;
 import com.scorpion.risk.api.entity.RiskConfig;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -56,6 +57,6 @@ public interface RiskConfigMapper {
      * @param id
      * @return
      */
-    RiskConfig findByPrimaryKey(Long id);
+    RiskConfig findByPrimaryKey(@Param("id") Long id);
 
 }
