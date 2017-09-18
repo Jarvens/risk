@@ -29,7 +29,7 @@ public class InterfaceObjController {
      */
     @RequestMapping(value = "/interface/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody InterfaceObj interfaceObj) {
-        return null;
+        return interfaceObjService.add(interfaceObj);
     }
 
 
@@ -41,7 +41,7 @@ public class InterfaceObjController {
      */
     @RequestMapping(value = "/interface/deleteByPrimaryKey", method = RequestMethod.POST)
     public BaseResult deleteByPrimaryKey(Long id) {
-        return null;
+        return interfaceObjService.deleteByPrimaryKey(id);
     }
 
     /**
@@ -52,7 +52,7 @@ public class InterfaceObjController {
      */
     @RequestMapping(value = "/interface/update", method = RequestMethod.POST)
     public BaseResult update(@RequestBody InterfaceObj interfaceObj) {
-        return null;
+        return interfaceObjService.update(interfaceObj);
     }
 
 
@@ -65,7 +65,7 @@ public class InterfaceObjController {
      */
     @RequestMapping(value = "/interface/findByPage", method = RequestMethod.GET)
     public PageResult findByPage(Integer pageNo, Integer pageSize) {
-        return null;
+        return interfaceObjService.findByPage(pageNo, pageSize);
     }
 
 

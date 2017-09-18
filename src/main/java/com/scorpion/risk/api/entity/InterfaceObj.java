@@ -15,7 +15,7 @@ public class InterfaceObj {
     //接口名称
     private String name;
 
-    //接口类型   GET  POST
+    //接口类型   1.GET  0.POST
     private String type;
 
     //接口地址

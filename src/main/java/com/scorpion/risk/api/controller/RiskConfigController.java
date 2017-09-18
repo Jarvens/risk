@@ -35,7 +35,7 @@ public class RiskConfigController {
      */
     @RequestLimit(count = 10, time = 60000, config = true)
     @RequestMapping(value = "/config/add", method = RequestMethod.POST)
-    public BaseResult add(@RequestBody RiskConfig riskConfig) {
+    public BaseResult add(@RequestBody  RiskConfig riskConfig) {
         LOGGER.info("请求进来");
         return riskConfigService.add(riskConfig);
     }
