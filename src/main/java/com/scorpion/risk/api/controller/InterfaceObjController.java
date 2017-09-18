@@ -68,5 +68,17 @@ public class InterfaceObjController {
         return interfaceObjService.findByPage(pageNo, pageSize);
     }
 
+    /**
+     * 设置接口规则
+     *
+     * @param interfaceId
+     * @param ruleId
+     * @return
+     */
+    @RequestMapping(value = "/ruleSetting", method = RequestMethod.POST)
+    public BaseResult ruleSetting(Long interfaceId, Long ruleId) {
+        return interfaceObjService.ruleSetting(interfaceId,ruleId);
+    }
+
 
 }

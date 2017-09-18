@@ -3,6 +3,8 @@ package com.scorpion.risk.api.mapper;
 import com.github.pagehelper.Page;
 import com.scorpion.risk.api.entity.InterfaceObj;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.aspectj.lang.annotation.Pointcut;
 
 import java.util.List;
 
@@ -49,4 +51,15 @@ public interface InterfaceObjMapper {
      * @return
      */
     List<InterfaceObj> findAll();
+
+    /**
+     * 接口规则设置
+     *
+     * @param interfaceId
+     * @param ruleId
+     * @return
+     */
+    int ruleSetting(@Param("interfaceId") Long interfaceId, @Param("ruleId") Long ruleId);
+
+
 }

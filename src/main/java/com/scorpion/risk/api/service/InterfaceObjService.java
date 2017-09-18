@@ -11,6 +11,7 @@ public interface InterfaceObjService {
 
     /**
      * 创建接口列表
+     *
      * @param interfaceObj
      * @return
      */
@@ -18,6 +19,7 @@ public interface InterfaceObjService {
 
     /**
      * 根据主键删除接口信息
+     *
      * @param id
      * @return
      */
@@ -25,6 +27,7 @@ public interface InterfaceObjService {
 
     /**
      * 修改接口信息
+     *
      * @param interfaceObj
      * @return
      */
@@ -32,15 +35,26 @@ public interface InterfaceObjService {
 
     /**
      * 分页查询接口列表
+     *
      * @param pageNo
      * @param pageSize
      * @return
      */
-    PageResult findByPage(Integer pageNo,Integer pageSize);
+    PageResult findByPage(Integer pageNo, Integer pageSize);
 
     /**
      * 查询所有接口列表
+     *
      * @return
      */
     BaseResult findAll();
+
+    /**
+     * 设置接口规则
+     *
+     * @param interfaceId
+     * @param ruleId
+     * @return
+     */
+    BaseResult ruleSetting(Long interfaceId, Long ruleId);
 }

@@ -15,5 +15,21 @@
         SELECT * FROM t_interface
     </select>
 
+    <update id="update" parameterType="com.scorpion.risk.api.entity.InterfaceObj">
+        UPDATE t_interface
+        SET name=#{name},
+        type=#{type},
+        url=#{url},
+        ruleCode=#{ruleCode},
+        params=#{params},
+        paramsType=#{paramsType},
+        updateTime=NOW()
+        WHERE id=#{id}
+    </update>
+
+    <update id="ruleSetting">
+        UPDATE t_interface SET ruleId=#{ruleId} WHERE id=#{interfaceId}
+    </update>
+
 
 </mapper>

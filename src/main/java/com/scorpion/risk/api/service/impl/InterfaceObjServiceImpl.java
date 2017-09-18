@@ -91,4 +91,19 @@ public class InterfaceObjServiceImpl implements InterfaceObjService {
         List<InterfaceObj> list = interfaceObjMapper.findAll();
         return BaseResult.success(list);
     }
+
+    /**
+     * 设置接口规则
+     *
+     * @param interfaceId
+     * @param ruleId
+     * @return
+     */
+    @Override
+    public BaseResult ruleSetting(Long interfaceId, Long ruleId) {
+        return null;
+    }
+
+
+
 }

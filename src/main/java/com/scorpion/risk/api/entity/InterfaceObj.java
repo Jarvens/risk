@@ -22,7 +22,7 @@ public class InterfaceObj {
     private String url;
 
     //规则编号
-    private String ruleCode;
+    private Long ruleId;
 
     //是否存在参数  1存在  0不存在
     private String params;
@@ -71,12 +71,12 @@ public class InterfaceObj {
         this.url = url;
     }
 
-    public String getRuleCode() {
-        return ruleCode;
+    public Long getRuleId() {
+        return ruleId;
     }
 
-    public void setRuleCode(String ruleCode) {
-        this.ruleCode = ruleCode;
+    public void setRuleId(Long ruleId) {
+        this.ruleId = ruleId;
     }
 
     public String getParams() {
@@ -118,7 +118,7 @@ public class InterfaceObj {
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", url='" + url + '\'' +
-                ", ruleCode='" + ruleCode + '\'' +
+                ", ruleId=" + ruleId +
                 ", params='" + params + '\'' +
                 ", paramsType='" + paramsType + '\'' +
                 ", createTime=" + createTime +
