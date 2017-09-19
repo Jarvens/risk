@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 配置
  * Created on 2017/9/17.
  */
+
 @RestController
 @RequestMapping("api")
 public class RiskConfigController {
@@ -35,7 +36,7 @@ public class RiskConfigController {
      * @param riskConfig
      * @return
      */
-    @ApiOperation(value = "规则",notes = "创建规则")
+    @ApiOperation(value = "创建规则")
     @RequestLimit(count = 10, time = 60000, config = true)
     @RequestMapping(value = "/config/add", method = RequestMethod.POST)
     public BaseResult add(@RequestBody RiskConfig riskConfig) {
@@ -50,6 +51,7 @@ public class RiskConfigController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "删除规则")
     @RequestMapping(value = "/config/deleteByPrimaryKey", method = RequestMethod.POST)
     public BaseResult deleteByPrimaryKey(Long id) {
         return riskConfigService.deleteByPrimaryKey(id);
@@ -63,6 +65,7 @@ public class RiskConfigController {
      * @param pageSize
      * @return
      */
+    @ApiOperation(value = "分页查询")
     @RequestLimit(count = 10, time = 60000, config = false)
     @RequestMapping(value = "/config/findByPage", method = RequestMethod.GET)
     public PageResult findByPage(Integer pageNo, Integer pageSize) {
@@ -75,6 +78,7 @@ public class RiskConfigController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "规则详情")
     @RequestMapping(value = "/config/info", method = RequestMethod.GET)
     public BaseResult info(Long id) {
         return riskConfigService.info(id);
@@ -85,6 +89,7 @@ public class RiskConfigController {
      *
      * @return
      */
+    @ApiOperation(value = "查询所有规则")
     @RequestMapping(value = "/config/findAll", method = RequestMethod.GET)
     public BaseResult findAll() {
         return riskConfigService.findAll();

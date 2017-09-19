@@ -4,6 +4,7 @@ import com.scorpion.risk.annotation.RequestLimit;
 import com.scorpion.risk.api.service.DonationService;
 import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.util.HttpUtil;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,7 @@ public class DonationController {
      * @param donationId
      * @return
      */
+    @ApiOperation(value = "献血接口",notes = "根据献血证号查询献血记录")
     @RequestLimit(count = 20, time = 60000, config = false)
     @RequestMapping(value = "/donation/query", method = RequestMethod.GET)
     public BaseResult query(String donationId) {
