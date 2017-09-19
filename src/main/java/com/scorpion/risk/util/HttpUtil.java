@@ -47,7 +47,7 @@ public class HttpUtil {
             conn.setRequestMethod("GET");
 
             conn.setRequestProperty("Content-type", "application/json");
-            conn.setRequestProperty("Authorization", "ZJB You AccessKey:" + signature);
+            conn.setRequestProperty("Authorization", "ZJB " + Constant.ACCESS_KEY + ":" + signature);
             conn.setRequestProperty("Date", date);
             conn.setRequestProperty("x-zjb-date", date);
             conn.setRequestProperty("x-zjb-version", version);
