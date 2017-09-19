@@ -2,6 +2,8 @@ package com.scorpion.risk.api.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.scorpion.risk.annotation.RequestLimit;
+import com.scorpion.risk.api.entity.Donation;
+import com.scorpion.risk.api.entity.DonationResponse;
 import com.scorpion.risk.api.entity.DonatorExt;
 import com.scorpion.risk.api.entity.DonatorResponse;
 import com.scorpion.risk.api.service.DonationService;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -53,6 +56,36 @@ public class DonationController {
 
         System.out.println(donatorResponse.toString());
 
+        return null;
+    }
+
+    /**
+     * 调用滨江数据 初始化
+     *
+     * @return
+     */
+    @ApiIgnore
+    @RequestMapping(value = "/donation/dataInit", method = RequestMethod.GET)
+    public BaseResult dataInit() {
+
+        //查询所有献血证ID
+        List<String> idList = donationService.findAll();
+        //循环调用接口
+        for (String id : idList) {
+            String response = HttpUtil.get(id);
+            if (null == response) {
+                continue;
+            }
+            //献血者对象
+            DonatorResponse doResponse = JSONObject.parseObject(response, DonatorResponse.class);
+
+            //献血记录对象
+            List<DonationResponse> donationResponseList = doResponse.getDonationList();
+
+            //TODO  录入献血人信息
+
+            //TODO  录入献血记录
+        }
         return null;
     }
 

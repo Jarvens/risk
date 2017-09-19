@@ -63,7 +63,7 @@ public class DonatorResponse {
     private Date LastDonationDate;
 
     //献血记录集合
-    private List<DonatorResponse> DonationList;
+    private List<DonationResponse> DonationList;
 
     public int getDonorId() {
         return DonorId;
@@ -153,11 +153,11 @@ public class DonatorResponse {
         LastDonationDate = lastDonationDate;
     }
 
-    public List<DonatorResponse> getDonationList() {
+    public List<DonationResponse> getDonationList() {
         return DonationList;
     }
 
-    public void setDonationList(List<DonatorResponse> donationList) {
+    public void setDonationList(List<DonationResponse> donationList) {
         DonationList = donationList;
     }
 
