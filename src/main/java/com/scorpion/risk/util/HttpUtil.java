@@ -40,7 +40,7 @@ public class HttpUtil {
                     + "x-zjb-version:" + version + "\n"
                     + Constant.ENDPOINT + donationId;
             String signature = enCryptToSHA1(str, Constant.ACCESS_KEY_SECRET);
-            String address = Constant.DONATION_URL + "/api/" + Constant.ENDPOINT;
+            String address = Constant.DONATION_URL + "/api/" + Constant.ENDPOINT + donationId;
             URL url = new URL(address);
             conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(5 * 60 * 1000);

@@ -3,6 +3,7 @@ package com.scorpion.risk.api.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.scorpion.risk.annotation.RequestLimit;
 import com.scorpion.risk.api.entity.DonatorExt;
+import com.scorpion.risk.api.entity.DonatorResponse;
 import com.scorpion.risk.api.service.DonationService;
 import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.util.HttpUtil;
@@ -48,8 +49,9 @@ public class DonationController {
     @RequestMapping(value = "/donation/query", method = RequestMethod.GET)
     public BaseResult query(String donationId) {
         String response = HttpUtil.get(donationId);
-        DonatorExt donatorExt = JSONObject.parseObject(response,DonatorExt.class);
-        System.out.println(donatorExt.toString());
+        DonatorResponse donatorResponse = JSONObject.parseObject(response, DonatorResponse.class);
+
+        System.out.println(donatorResponse.toString());
 
         return null;
     }
