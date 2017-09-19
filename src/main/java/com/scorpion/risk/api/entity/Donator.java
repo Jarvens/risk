@@ -13,7 +13,7 @@ public class Donator {
     private Long id;
 
     //献血者唯一标识id
-    private Long donatorId;
+    private int donorId;
 
     //姓名
     private String name;
@@ -40,7 +40,7 @@ public class Donator {
     private String telePhone;
 
     //献血总量
-    private Integer donationTotalVolumes;
+    private Double donationTotalVolumes;
 
     //最后献血时间
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
@@ -71,12 +71,12 @@ public class Donator {
         this.id = id;
     }
 
-    public Long getDonatorId() {
-        return donatorId;
+    public int getDonorId() {
+        return donorId;
     }
 
-    public void setDonatorId(Long donatorId) {
-        this.donatorId = donatorId;
+    public void setDonorId(int donorId) {
+        this.donorId = donorId;
     }
 
     public String getName() {
@@ -143,14 +143,6 @@ public class Donator {
         this.telePhone = telePhone;
     }
 
-    public Integer getDonationTotalVolumes() {
-        return donationTotalVolumes;
-    }
-
-    public void setDonationTotalVolumes(Integer donationTotalVolumes) {
-        this.donationTotalVolumes = donationTotalVolumes;
-    }
-
     public Date getLastDonationDate() {
         return lastDonationDate;
     }
@@ -199,11 +191,19 @@ public class Donator {
         this.address = address;
     }
 
+    public Double getDonationTotalVolumes() {
+        return donationTotalVolumes;
+    }
+
+    public void setDonationTotalVolumes(Double donationTotalVolumes) {
+        this.donationTotalVolumes = donationTotalVolumes;
+    }
+
     @Override
     public String toString() {
         return "Donator{" +
                 "id=" + id +
-                ", donatorId=" + donatorId +
+                ", donorId=" + donorId +
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +

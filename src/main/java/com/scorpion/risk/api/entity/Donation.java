@@ -13,7 +13,7 @@ public class Donation {
     private Long id;
 
     //献血编号
-    private Long donationId;
+    private String donationId;
 
     //献血日期
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
@@ -23,7 +23,7 @@ public class Donation {
     private String collectionType;
 
     //献血量
-    private Integer donationVolumes;
+    private Double donationVolumes;
 
     //献血地点
     private String donationAddress;
@@ -42,20 +42,15 @@ public class Donation {
     //城市编码
     private Integer city;
 
+    //献血者id
+    private Long donatorId;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getDonationId() {
-        return donationId;
-    }
-
-    public void setDonationId(Long donationId) {
-        this.donationId = donationId;
     }
 
     public Date getDonationDate() {
@@ -74,11 +69,11 @@ public class Donation {
         this.collectionType = collectionType;
     }
 
-    public Integer getDonationVolumes() {
+    public Double getDonationVolumes() {
         return donationVolumes;
     }
 
-    public void setDonationVolumes(Integer donationVolumes) {
+    public void setDonationVolumes(Double donationVolumes) {
         this.donationVolumes = donationVolumes;
     }
 
@@ -122,11 +117,27 @@ public class Donation {
         this.city = city;
     }
 
+    public String getDonationId() {
+        return donationId;
+    }
+
+    public void setDonationId(String donationId) {
+        this.donationId = donationId;
+    }
+
+    public Long getDonatorId() {
+        return donatorId;
+    }
+
+    public void setDonatorId(Long donatorId) {
+        this.donatorId = donatorId;
+    }
+
     @Override
     public String toString() {
         return "Donation{" +
                 "id=" + id +
-                ", donationId=" + donationId +
+                ", donationId='" + donationId + '\'' +
                 ", donationDate=" + donationDate +
                 ", collectionType='" + collectionType + '\'' +
                 ", donationVolumes=" + donationVolumes +
@@ -135,6 +146,7 @@ public class Donation {
                 ", createtime=" + createtime +
                 ", updateTime=" + updateTime +
                 ", city=" + city +
+                ", donatorId=" + donatorId +
                 '}';
     }
 }

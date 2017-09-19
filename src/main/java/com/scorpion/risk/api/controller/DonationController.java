@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.scorpion.risk.annotation.RequestLimit;
 import com.scorpion.risk.api.entity.Donation;
 import com.scorpion.risk.api.entity.DonationResponse;
+import com.scorpion.risk.api.entity.Donator;
 import com.scorpion.risk.api.entity.DonatorExt;
 import com.scorpion.risk.api.entity.DonatorResponse;
 import com.scorpion.risk.api.service.DonationService;
+import com.scorpion.risk.api.service.DonatorService;
 import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.util.HttpUtil;
 import io.swagger.annotations.ApiOperation;
@@ -41,6 +43,9 @@ public class DonationController {
     @Autowired
     private DonationService donationService;
 
+    @Autowired
+    private DonatorService donatorService;
+
     /**
      * 根据献血证号查询
      *
@@ -68,23 +73,52 @@ public class DonationController {
     @RequestMapping(value = "/donation/dataInit", method = RequestMethod.GET)
     public BaseResult dataInit() {
 
+        //当前时间
+        Long startTime = System.currentTimeMillis();
+
         //查询所有献血证ID
         List<String> idList = donationService.findAll();
         //循环调用接口
-        for (String id : idList) {
+        for (int i = 0; i < idList.size(); i++) {
+            String id = idList.get(i);
+            LOGGER.info("【接口调用开始:第" + i + "次】" + "【开始时间:" + startTime + "】");
             String response = HttpUtil.get(id);
             if (null == response) {
                 continue;
             }
             //献血者对象
             DonatorResponse doResponse = JSONObject.parseObject(response, DonatorResponse.class);
-
             //献血记录对象
             List<DonationResponse> donationResponseList = doResponse.getDonationList();
-
             //TODO  录入献血人信息
-
+            Donator donator = new Donator();
+            donator.setAbo(doResponse.getABO());
+            donator.setDonorId(doResponse.getDonorId());
+            donator.setName(doResponse.getName());
+            donator.setSex(doResponse.getSex());
+            donator.setAge(doResponse.getAge());
+            donator.setCertificateId(doResponse.getCertificateID());
+            donator.setCertificateType(doResponse.getCertificateType());
+            donator.setMobileTelePhone(doResponse.getMobileTelePhone());
+            donator.setTelePhone(doResponse.getTelePhone());
+            donator.setDonationTotalVolumes(doResponse.getDonationTotalVolumes());
+            donator.setLastDonationDate(donator.getLastDonationDate());
+            donatorService.add(donator);
             //TODO  录入献血记录
+            if (null != donationResponseList && donationResponseList.size() > 0) {
+                for (DonationResponse donationResponse : donationResponseList) {
+                    Donation donation = new Donation();
+                    donation.setDonationId(donationResponse.getDonationID());
+                    donation.setDonationDate(donationResponse.getDonationDate());
+                    donation.setCollectionType(donationResponse.getCollectionType());
+                    donation.setDonationVolumes(donationResponse.getDonationVolumes());
+                    donation.setDonatorId(donator.getId());
+                    donationService.add(donation);
+                }
+            }
+            Long endTime = System.currentTimeMillis();
+            LOGGER.info(
+                    "【接口调用结束:第" + i + "次】" + "【结束时间:" + endTime + "】" + "耗时:" + ((endTime - startTime) / 1000) + "秒");
         }
         return null;
     }
