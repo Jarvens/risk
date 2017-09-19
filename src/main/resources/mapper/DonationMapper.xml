@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.scorpion.risk.api.mapper.DonationMapper">
+
+    <insert id="addDonationId" parameterType="java.lang.String">
+        INSERT INTO t_donation_id(donationId)
+        VALUES (#{donationId})
+    </insert>
+
+    <select id="findAll" resultType="java.lang.String">
+        SELECT donationId FROM t_donation_id
+    </select>
+</mapper>
