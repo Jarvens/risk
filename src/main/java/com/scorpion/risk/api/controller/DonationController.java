@@ -49,17 +49,16 @@ public class DonationController {
     /**
      * 根据献血证号查询
      *
-     * @param donationId
+     * @param certificateId
+     * @param name
+     * @param mobile
      * @return
      */
-    @ApiOperation(value = "献血接口", notes = "根据献血证号查询献血记录")
+    @ApiOperation(value = "献血接口", notes = "根据身份证|姓名|手机号查询数据")
     @RequestLimit(count = 20, time = 60000, config = false)
     @RequestMapping(value = "/donation/query", method = RequestMethod.GET)
-    public BaseResult query(String donationId) {
-        String response = HttpUtil.get(donationId);
-        DonatorResponse donatorResponse = JSONObject.parseObject(response, DonatorResponse.class);
+    public BaseResult query(String certificateId, String name, String mobile) {
 
-        System.out.println(donatorResponse.toString());
 
         return null;
     }

@@ -39,4 +39,17 @@
         #{city},
         #{address})
     </insert>
+
+    <select id="findByCondition" resultType="com.scorpion.risk.api.entity.Donator">
+        SELECT * FROM t_donator WHERE 1=1
+        <if test="certificateId!=null and certificateId!=''">
+            AND certificateId=#{certificateId}
+        </if>
+        <if test="name!=null and name!=''">
+            AND name=#{name}
+        </if>
+        <if test="mobile!=null and mobile!=''">
+            AND mobileTelePhone=#{mobile}
+        </if>
+    </select>
 </mapper>

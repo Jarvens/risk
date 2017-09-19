@@ -2,6 +2,7 @@ package com.scorpion.risk.api.mapper;
 
 import com.scorpion.risk.api.entity.Donation;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,5 +23,13 @@ public interface DonationMapper {
     int addDonationId(String donationId);
 
     List<String> findAll();
+
+    /**
+     * 根据献血人主键查询献血记录
+     *
+     * @param donatorId
+     * @return
+     */
+    List<Donation> findByDonatorId(@Param("donatorId") Long donatorId);
 
 }

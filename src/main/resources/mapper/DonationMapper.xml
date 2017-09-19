@@ -15,4 +15,8 @@
         INSERT INTO t_donation(donationId,donationDate,collectionType,donationVolumes,donationAddress,donationOrg,createTime,updateTime,city,donatorId)
         VALUES (#{donationId},#{donationDate},#{collectionType},#{donationVolumes},#{donationAddress},#{donationOrg},NOW(),NOW(),#{city},#{donatorId})
     </insert>
+
+    <select id="findByDonatorId" resultType="com.scorpion.risk.api.entity.Donation">
+        SELECT * FROM t_donation WHERE donatorId=#{donatorId}
+    </select>
 </mapper>
