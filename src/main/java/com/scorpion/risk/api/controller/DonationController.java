@@ -11,6 +11,7 @@ import com.scorpion.risk.api.service.DonationService;
 import com.scorpion.risk.api.service.DonatorService;
 import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.util.HttpUtil;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,7 @@ import java.util.List;
  * Created on 2017/9/18.
  */
 @RestController
+@ApiModel(value = "献血者")
 @RequestMapping("api")
 public class DonationController {
 
@@ -54,13 +56,11 @@ public class DonationController {
      * @param mobile
      * @return
      */
-    @ApiOperation(value = "献血接口", notes = "根据身份证|姓名|手机号查询数据")
+    @ApiOperation(value = "根据身份证|姓名|手机号查询数据")
     @RequestLimit(count = 20, time = 60000, config = false)
     @RequestMapping(value = "/donation/query", method = RequestMethod.GET)
     public BaseResult query(String certificateId, String name, String mobile) {
-
-
-        return null;
+        return donationService.findByCondition(certificateId, name, mobile);
     }
 
     /**
@@ -128,6 +128,7 @@ public class DonationController {
      * @param path
      * @return
      */
+    @ApiIgnore
     @RequestMapping(value = "/donation/importDonatorTxt", method = RequestMethod.GET)
     public BaseResult importDonatorTxt(String path) throws IOException {
         File file = new File("/Users/kunlun/Downloads/报销记录/" + path);
