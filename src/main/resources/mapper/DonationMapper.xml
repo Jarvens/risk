@@ -12,7 +12,7 @@
     </select>
 
     <insert id="add" parameterType="com.scorpion.risk.api.entity.Donation">
-        INSERT INTO t_doantion(donationId,donationDate,collectionType,donationVolumes,donationAddress,donationOrg,createTime,updateTime,city,donatorId)
-        VALUES (#{doantionId},#{donationDate},#{collectionType},#{donationVolumes},#{donationAddress},#{doantionOrg},NOW(),NOW(),#{city},#{donatorId})
+        INSERT INTO t_donation(donationId,donationDate,collectionType,donationVolumes,donationAddress,donationOrg,createTime,updateTime,city,donatorId)
+        VALUES (#{donationId},#{donationDate},#{collectionType},#{donationVolumes},#{donationAddress},#{donationOrg},NOW(),NOW(),#{city},#{donatorId})
     </insert>
 </mapper>

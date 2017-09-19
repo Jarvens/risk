@@ -46,7 +46,7 @@ public class DonationServiceImpl implements DonationService {
 
     @Override
     public List<String> findAll() {
-        return null;
+        return donationMapper.findAll();
     }
 
 
