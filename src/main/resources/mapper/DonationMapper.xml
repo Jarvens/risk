@@ -10,4 +10,9 @@
     <select id="findAll" resultType="java.lang.String">
         SELECT donationId FROM t_donation_id
     </select>
+
+    <insert id="add" parameterType="com.scorpion.risk.api.entity.Donation">
+        INSERT INTO t_doantion(donationId,donationDate,collectionType,donationVolumes,donationAddress,donationOrg,createTime,updateTime,city,donatorId)
+        VALUES (#{doantionId},#{donationDate},#{collectionType},#{donationVolumes},#{donationAddress},#{doantionOrg},NOW(),NOW(),#{city},#{donatorId})
+    </insert>
 </mapper>
