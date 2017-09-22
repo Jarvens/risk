@@ -95,4 +95,9 @@ public class RiskConfigController {
         return riskConfigService.findAll();
     }
 
+    @RequestMapping(value = "/config/error")
+    public BaseResult error() {
+        return BaseResult.authorizationError();
+    }
+
 }
