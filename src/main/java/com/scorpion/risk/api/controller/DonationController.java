@@ -13,12 +13,19 @@ import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.util.HttpUtil;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.io.BufferedReader;
@@ -26,6 +33,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -60,8 +68,12 @@ public class DonationController {
     @RequestLimit(count = 20, time = 60000, config = false)
     @RequestMapping(value = "/donation/query", method = RequestMethod.GET)
     public BaseResult query(String certificateId, String name, String mobile) {
+        if (StringUtils.isEmpty(certificateId) || StringUtils.isEmpty(name) || StringUtils.isEmpty(mobile)) {
+            return BaseResult.parameterError();
+        }
         return donationService.findByCondition(certificateId, name, mobile);
     }
+
 
     /**
      * 调用滨江数据 初始化

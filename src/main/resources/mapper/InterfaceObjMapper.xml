@@ -3,36 +3,42 @@
 <mapper namespace="com.scorpion.risk.api.mapper.InterfaceObjMapper">
 
     <insert id="add" parameterType="com.scorpion.risk.api.entity.InterfaceObj">
-        INSERT INTO t_interface(name,type,url,ruleId,params,paramsType,createTime,updateTime)
-        VALUES (#{name},#{type},#{url},#{ruleId},#{params},#{paramsType},NOW(),NOW())
+        INSERT INTO t_interface (name, type, url, ruleId, params, paramsType, createTime, updateTime)
+        VALUES (#{name}, #{type}, #{url}, #{ruleId}, #{params}, #{paramsType}, NOW(), NOW())
     </insert>
 
     <delete id="deleteByPrimaryKey">
-        DELETE FROM t_interface WHERE id=#{id}
+        DELETE FROM t_interface
+        WHERE id = #{id}
     </delete>
 
     <select id="findByPage" resultType="com.scorpion.risk.api.entity.InterfaceObj">
-        SELECT * FROM t_interface
+        SELECT *
+        FROM t_interface
     </select>
 
     <update id="update" parameterType="com.scorpion.risk.api.entity.InterfaceObj">
         UPDATE t_interface
-        SET name=#{name},
-        type=#{type},
-        url=#{url},
-        ruleId=#{ruleId},
-        params=#{params},
-        paramsType=#{paramsType},
-        updateTime=NOW()
-        WHERE id=#{id}
+        SET name       = #{name},
+            type       = #{type},
+            url        = #{url},
+            ruleId     = #{ruleId},
+            params     = #{params},
+            paramsType = #{paramsType},
+            updateTime = NOW()
+        WHERE id = #{id}
     </update>
 
     <update id="ruleSetting">
-        UPDATE t_interface SET ruleId=#{ruleId} WHERE id=#{interfaceId}
+        UPDATE t_interface
+        SET ruleId = #{ruleId}
+        WHERE id = #{interfaceId}
     </update>
 
     <select id="findByPrimaryKey" resultType="com.scorpion.risk.api.entity.InterfaceObj">
-        SELECT * FROM t_interface WHERE id=#{id}
+        SELECT *
+        FROM t_interface
+        WHERE id = #{id}
     </select>
 
 

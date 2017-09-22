@@ -51,5 +51,6 @@
         <if test="mobile!=null and mobile!=''">
             AND mobileTelePhone=#{mobile}
         </if>
+        limit 1
     </select>
 </mapper>

@@ -6,6 +6,7 @@ import com.scorpion.risk.result.BaseResult;
 import com.scorpion.risk.result.PageResult;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -85,6 +86,8 @@ public class InterfaceObjController {
     public BaseResult ruleSetting(Long interfaceId, Long ruleId) {
         return interfaceObjService.ruleSetting(interfaceId,ruleId);
     }
+
+
 
 
 }

@@ -5,6 +5,8 @@
     <insert id="addDonationId" parameterType="java.lang.String">
         INSERT INTO t_donation_id(donationId)
         VALUES (#{donationId})
+
+
     </insert>
 
     <select id="findAll" resultType="java.lang.String">

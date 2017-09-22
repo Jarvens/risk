@@ -6,8 +6,20 @@
         <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
-      INSERT INTO t_risk_config_snapshot(name,frequency,maxClient,authorization,expire,auto,off,interfaceId,createTime,updateTime)
-      VALUES (#{name},#{frequency},#{maxClient},#{authorization},#{expire},#{auto},#{off},#{interfaceId},NOW(),NOW())
+        INSERT INTO
+        t_risk_config_snapshot(name,frequency,maxClient,authorization,expire,auto,off,interfaceId,createTime,updateTime)
+        VALUES (#{name},#{frequency},#{maxClient},#{authorization},#{expire},#{auto},#{off},#{interfaceId},NOW(),NOW())
     </insert>
+
+    <select id="findByMethodTypeAndUrl" resultType="com.scorpion.risk.api.entity.RiskConfigSnapshot">
+        SELECT
+            trcs.frequency,
+            trcs.maxClient,
+            trcs.authorization,
+            trcs.auto,
+            trcs.off
+        FROM t_risk_config_snapshot trcs LEFT JOIN t_interface ti ON ti.ruleId = trcs.id
+        WHERE ti.type = #{method} AND ti.url = #{url}
+    </select>
 
 </mapper>

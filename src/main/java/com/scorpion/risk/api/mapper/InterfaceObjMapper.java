@@ -63,10 +63,12 @@ public interface InterfaceObjMapper {
 
     /**
      * 根据id查询接口
+     *
      * @param id
      * @return
      */
     InterfaceObj findByPrimaryKey(Long id);
+
 
 
 }
